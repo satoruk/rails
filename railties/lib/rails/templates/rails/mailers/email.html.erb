@@ -50,40 +50,40 @@
 <header>
   <dl>
     <% if @email.respond_to?(:smtp_envelope_from) && Array(@email.from) != Array(@email.smtp_envelope_from) %>
-      <dt>SMTP-From:</dt>
-      <dd><%= @email.smtp_envelope_from %></dd>
+      <dt class="smtp_envelope_from">SMTP-From:</dt>
+      <dd class="smtp_envelope_from"><%= @email.smtp_envelope_from %></dd>
     <% end %>
 
     <% if @email.respond_to?(:smtp_envelope_to) && @email.to != @email.smtp_envelope_to %>
-      <dt>SMTP-To:</dt>
-      <dd><%= @email.smtp_envelope_to %></dd>
+      <dt class="smtp_envelope_to">SMTP-To:</dt>
+      <dd class="smtp_envelope_to"><%= @email.smtp_envelope_to %></dd>
     <% end %>
 
-    <dt>From:</dt>
-    <dd><%= @email.header['from'] %></dd>
+    <dt class="header_from">From:</dt>
+    <dd class="header_from"><%= @email.header['from'] %></dd>
 
     <% if @email.reply_to %>
-      <dt>Reply-To:</dt>
-      <dd><%= @email.header['reply-to'] %></dd>
+      <dt class="header_reply_to">Reply-To:</dt>
+      <dd class="header_reply_to"><%= @email.header['reply-to'] %></dd>
     <% end %>
 
-    <dt>To:</dt>
-    <dd><%= @email.header['to'] %></dd>
+    <dt class="header_to">To:</dt>
+    <dd class="header_to"><%= @email.header['to'] %></dd>
 
     <% if @email.cc %>
-      <dt>CC:</dt>
-      <dd><%= @email.header['cc'] %></dd>
+      <dt class="header_cc">CC:</dt>
+      <dd class="header_cc"><%= @email.header['cc'] %></dd>
     <% end %>
 
     <dt>Date:</dt>
     <dd><%= Time.current.rfc2822 %></dd>
 
-    <dt>Subject:</dt>
-    <dd><strong><%= @email.subject %></strong></dd>
+    <dt class="subject">Subject:</dt>
+    <dd class="subject"><strong><%= @email.subject %></strong></dd>
 
     <% unless @email.attachments.nil? || @email.attachments.empty? %>
-      <dt>Attachments:</dt>
-      <dd>
+      <dt class="attachments">Attachments:</dt>
+      <dd class="attachments">
         <%= @email.attachments.map { |a| a.respond_to?(:original_filename) ? a.original_filename : a.filename }.inspect %>
       </dd>
     <% end %>
